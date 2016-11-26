@@ -2,8 +2,8 @@
 
 return array(
     'add' => 'phonebook/showaddform',
-    'insert' => 'phonebook/insert',
     'search' => 'phonebook/showsearchform',
-    'record' => 'phonebook/record',
+    'ru' => 'phonebook/langru',
+    'en' => 'phonebook/langen',
     '' => 'phonebook/list',
 );

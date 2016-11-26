@@ -14,26 +14,40 @@ class PhonebookController
 
     public function actionShowaddform()
     {
-        require_once(ROOT . '/views/phonebook/add.php');
-        return true;
-    }
-
-    public function actionInsert()
-    {
-        PhoneBook::insert();
+        if (isset($_POST["add"])) {
+            PhoneBook::addRecord($_POST['name'], $_POST['phone']);
+            //header("Location: http://{$_SERVER['SERVER_NAME']}/");
+            PhoneBook::redirect('http://'.$_SERVER['SERVER_NAME'].'/');
+            die();
+        } else {
+            require_once(ROOT . '/views/phonebook/add.php');
+        }
         return true;
     }
 
     public function actionShowsearchform()
     {
-        require_once(ROOT . '/views/phonebook/search.php');
+        if (isset($_POST["search"])) {
+            $records = PhoneBook::getRecord($_POST['name'], $_POST['phone']);
+            require_once(ROOT . '/views/phonebook/search.php');
+            require_once(ROOT . '/views/phonebook/list.php');
+        } else {
+            require_once(ROOT . '/views/phonebook/search.php');
+        }
         return true;
     }
 
-    public function actionRecord()
+    public function actionLangru()
     {
-        $records = PhoneBook::search();
-        require_once(ROOT . '/views/phonebook/list.php');
-        return true;
+        $_SESSION['lang'] = 'ru';
+        PhoneBook::redirect($_SERVER['HTTP_REFERER']);
+        die();
+    }
+
+    public function actionLangen()
+    {
+        $_SESSION['lang'] = 'en';
+        PhoneBook::redirect($_SERVER['HTTP_REFERER']);
+        die();
     }
 }

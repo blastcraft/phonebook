@@ -49,24 +49,7 @@ class PhoneBook
         $result->execute();
     }
 
-    public static function insert()
-    {
-        if (isset($_POST["add"])) {
-            self::addRecord($_POST['name'], $_POST['phone']);
-            //header("Location: http://{$_SERVER['SERVER_NAME']}/");
-            self::redirect('http://'.$_SERVER['SERVER_NAME'].'/');
-            die();
-        }
-    }
-
-    public static function search()
-    {
-        if (isset($_POST["search"])) {
-            return self::getRecord($_POST['name'], $_POST['phone']);
-        }
-    }
-
-    private static function redirect($url){
+    public static function redirect($url){
         if(headers_sent()){
             echo '<meta http-equiv="refresh" content="5; url='.$url.'">';
         }else{
