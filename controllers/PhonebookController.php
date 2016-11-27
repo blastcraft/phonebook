@@ -50,4 +50,25 @@ class PhonebookController
         PhoneBook::redirect($_SERVER['HTTP_REFERER']);
         die();
     }
+
+    public function actionDelete($id)
+    {
+        PhoneBook::delete($id);
+        PhoneBook::redirect('http://'.$_SERVER['SERVER_NAME'].'/');
+        die();
+    }
+
+    public function actionManage($id)
+    {
+        $records = array();
+        if (isset($_POST["manage"])) {
+            Phonebook::update($id, $_POST['name'], $_POST['phone']);
+            $records = PhoneBook::getRecordById($id);
+        } else {
+            $records = PhoneBook::getRecordById($id);
+        }
+        require_once(ROOT . '/views/phonebook/list.php');
+        require_once(ROOT . '/views/phonebook/manage.php');
+        return true;
+    }
 }

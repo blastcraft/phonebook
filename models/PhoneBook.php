@@ -24,6 +24,24 @@ class PhoneBook
          return $phoneRecord;
     }
 
+    public static function getRecordById($id)
+    {
+        $phoneRecord = array();
+        $db = Db::getConnection();
+        $result = $db->prepare("SELECT * FROM phonebook WHERE `id`=?");
+        $result->bindParam(1, $id);
+        $result->execute();
+        //$result->setFetchMode(PDO::FETCH_ASSOC);
+        $i = 0;
+        while($row = $result->fetch()) {
+            $phoneRecord[$i]['id'] = $row['id'];
+            $phoneRecord[$i]['name'] = $row['name'];
+            $phoneRecord[$i]['phone'] = $row['phone'];
+            $i++;
+        }
+        return $phoneRecord;
+    }
+
     public static function getRecordsList()
     {
         $phoneRecord = array();
@@ -49,12 +67,31 @@ class PhoneBook
         $result->execute();
     }
 
-    public static function redirect($url){
+    public static function redirect($url)
+    {
         if(headers_sent()){
             echo '<meta http-equiv="refresh" content="5; url='.$url.'">';
         }else{
             header("Location: ".$url);
         }
         exit;
+    }
+
+    public static function delete($id)
+    {
+        $db = Db::getConnection();
+        $result = $db->prepare("DELETE FROM phonebook WHERE `id`=?");
+        $result->bindParam(1, $id);
+        $result->execute();
+    }
+
+    public static function update($id, $name, $phone)
+    {
+        $db = Db::getConnection();
+        $result = $db->prepare("UPDATE `phonebook` SET `name`=?, `phone`=? WHERE `id`=?");
+        $result->bindParam(1, $name);
+        $result->bindParam(2, $phone);
+        $result->bindParam(3, $id);
+        $result->execute();
     }
 }

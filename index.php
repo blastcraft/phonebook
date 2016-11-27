@@ -11,16 +11,6 @@ session_start();
 define('ROOT', dirname(__FILE__));
 require_once(ROOT.'/components/Router.php');
 
-// Localization
-$lang = 'ru';
-if (isset($_POST['lang'])) {
-    $lang = $_POST['lang'];
-    $_SESSION['lang'] = $lang;
-} elseif (isset($_SESSION['lang'])) {
-    $lang = $_SESSION['lang'];
-}
-$array = parse_ini_file(ROOT."/locale/".$lang.".ini");
-
 // 3. Установка соединения с БД
 require_once(ROOT.'/components/Db.php');
 

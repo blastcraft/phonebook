@@ -18,9 +18,21 @@
     <![endif]-->
 </head>
 <body>
-<a href="/ru">[Ru]</a>
-<a href="/en">[En]</a>
-<hr>
-<a href="/"><?php echo $GLOBALS['array']['home'] ?></a>
-<a href="/add"><?php echo $GLOBALS['array']['add'] ?></a>
-<a href="/search"><?php echo $GLOBALS['array']['search'] ?></a>
+
+<?php
+require_once(ROOT.'/components/Translator.php');
+?>
+
+<table class="table">
+    <tr class="active">
+        <td align="left">
+            <a class="btn btn-default" href="/"><?php echo Translator::Translate('home') ?></a>
+            <a class="btn btn-default" href="/add"><?php echo Translator::Translate('add') ?></a>
+            <a class="btn btn-default" href="/search"><?php echo Translator::Translate('search') ?></a>
+        </td>
+        <td align="right">
+            <a class="btn btn-default" href="/ru">[Ru]</a>
+            <a class="btn btn-default" href="/en">[En]</a>
+        </td>
+    </tr>
+</table>
