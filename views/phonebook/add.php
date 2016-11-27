@@ -12,7 +12,7 @@ require_once(ROOT.'/components/Translator.php');
             <label class="sr-only" for="exampleInputName2"><?php echo $GLOBALS['array']['phone'] ?></label>
             <input type="text" class="form-control" id="exampleInputName2" placeholder="<?php echo Translator::Translate('phone') ?>" name="phone">
         </div>
-        <button type="submit" class="btn btn-default" name="add"><?php echo Translator::Translate('phone') ?></button>
+        <button type="submit" class="btn btn-default" name="add"><?php echo Translator::Translate('addbutton') ?></button>
     </form>
 
 <?php require_once(ROOT . '/views/phonebook/footer.php');

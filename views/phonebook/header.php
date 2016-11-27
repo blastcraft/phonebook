@@ -22,17 +22,24 @@
 <?php
 require_once(ROOT.'/components/Translator.php');
 ?>
-
 <table class="table">
-    <tr class="active">
-        <td align="left">
-            <a class="btn btn-default" href="/"><?php echo Translator::Translate('home') ?></a>
-            <a class="btn btn-default" href="/add"><?php echo Translator::Translate('add') ?></a>
-            <a class="btn btn-default" href="/search"><?php echo Translator::Translate('search') ?></a>
+    <tr>
+        <td>
+            <h1>My Phonebook</h1>
         </td>
         <td align="right">
             <a class="btn btn-default" href="/ru">[Ru]</a>
             <a class="btn btn-default" href="/en">[En]</a>
+        </td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr class="success">
+        <td align="left">
+            <a class="btn btn-default" href="/"><?php echo Translator::Translate('home') ?></a>
+            <a class="btn btn-default" href="/add"><?php echo Translator::Translate('add') ?></a>
+            <a class="btn btn-default" href="/search"><?php echo Translator::Translate('search') ?></a>
         </td>
     </tr>
 </table>
