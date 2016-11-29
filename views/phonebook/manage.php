@@ -1,6 +1,5 @@
 <?php
 require_once(ROOT . '/views/phonebook/header.php');
-require_once(ROOT.'/components/Translator.php');
 ?>
 
     <form action="/manage/<?php echo $records[0]['id'] ?>" method="post" role="form" class="form-inline">

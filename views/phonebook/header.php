@@ -19,9 +19,6 @@
 </head>
 <body>
 
-<?php
-require_once(ROOT.'/components/Translator.php');
-?>
 <table class="table">
     <tr>
         <td>
@@ -40,6 +37,10 @@ require_once(ROOT.'/components/Translator.php');
             <a class="btn btn-default" href="/"><?php echo Translator::Translate('home') ?></a>
             <a class="btn btn-default" href="/add"><?php echo Translator::Translate('add') ?></a>
             <a class="btn btn-default" href="/search"><?php echo Translator::Translate('search') ?></a>
+        </td>
+        <td align="right">
+            <a class="btn btn-default" href="/user/register"><?php echo Translator::Translate('login') ?></a>
+            <a class="btn btn-default" href="/user/register"><?php echo Translator::Translate('register') ?></a>
         </td>
     </tr>
 </table>

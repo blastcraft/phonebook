@@ -2,6 +2,8 @@
 
 class Translator
 {
+    private static $array;
+
     public static function Translate($command)
     {
         $lang = 'ru';
@@ -11,8 +13,11 @@ class Translator
         } elseif (isset($_SESSION['lang'])) {
             $lang = $_SESSION['lang'];
         }
-        $array = parse_ini_file(ROOT."/locale/".$lang.".ini");
+        if (!isset(self::$array[$lang]))
+        {
+            self::$array[$lang] = parse_ini_file(ROOT."/locale/".$lang.".ini");
+        }
 
-        return $array[$command];
+        return self::$array[$lang][$command];
     }
 }

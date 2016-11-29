@@ -2,9 +2,6 @@
 
 class PhoneBook
 {
-    /** Returns single record with specified id
-     * @rapam integer &id
-     */
     public static function getRecord($name, $phone)
     {
         $phoneRecord = array();

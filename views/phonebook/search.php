@@ -1,6 +1,5 @@
 <?php
 require_once(ROOT . '/views/phonebook/header.php');
-require_once(ROOT.'/components/Translator.php');
 ?>
 
     <form action="/search" method="post" role="form" class="form-inline">

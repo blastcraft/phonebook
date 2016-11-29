@@ -7,5 +7,7 @@ return array(
     'manage/([0-9]*)' => 'phonebook/manage/$1',
     'ru' => 'phonebook/langru',
     'en' => 'phonebook/langen',
+    'user/login' => 'user/register',
+    'user/register' => 'user/register',
     '' => 'phonebook/list',
 );

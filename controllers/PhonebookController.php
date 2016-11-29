@@ -1,7 +1,5 @@
 <?php
 
-include_once ROOT. '/models/PhoneBook.php';
-
 class PhonebookController
 {
 
