@@ -8,7 +8,7 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href=../css/bootstrap.min.css rel=stylesheet>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,8 +39,22 @@
             <a class="btn btn-default" href="/search"><?php echo Translator::Translate('search') ?></a>
         </td>
         <td align="right">
-            <a class="btn btn-default" href="/user/register"><?php echo Translator::Translate('login') ?></a>
-            <a class="btn btn-default" href="/user/register"><?php echo Translator::Translate('register') ?></a>
+            <?php if (isset($_SESSION['login']) && $_SESSION['login'] != 'guest'): ?>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default"><?php echo $_SESSION['login']; ?></button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#"><?php echo Translator::Translate('userconf'); ?></a></li>
+                        <li><a href="/user/logout"><?php echo Translator::Translate('logout'); ?></a></li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <a class="btn btn-default" href="/user/register"><?php echo Translator::Translate('register') ?></a>
+                <a class="btn btn-default" href="/user/login"><?php echo Translator::Translate('login') ?></a>
+            <?php endif; ?>
         </td>
     </tr>
 </table>
