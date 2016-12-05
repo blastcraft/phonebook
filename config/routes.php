@@ -10,5 +10,6 @@ return array(
     'user/login' => 'user/login',
     'user/register' => 'user/register',
     'user/logout' => 'user/logout',
+    'page-([0-9]+)' => 'phonebook/list/$1',
     '' => 'phonebook/list',
 );

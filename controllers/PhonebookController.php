@@ -3,9 +3,11 @@
 class PhonebookController
 {
 
-    public function actionList()
+    public function actionList($page = 1)
     {
-        $records = PhoneBook::getRecordsList();
+        $records = PhoneBook::getRecordsList($page);
+        $total = Phonebook::getTotalRecords();
+        $pagination = new Pagination($total, $page, Phonebook::SHOW_BY_DEFAULT, 'page-');
         require_once(ROOT . '/views/phonebook/list.php');
         return true;
     }

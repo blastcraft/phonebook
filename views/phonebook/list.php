@@ -29,4 +29,7 @@ foreach ($records as $record) {
 ?>
 </table>
 <?php
+
+echo $pagination->get();
+
 require_once(ROOT . '/views/phonebook/footer.php');

@@ -2,6 +2,18 @@
 
 class PhoneBook
 {
+
+    const SHOW_BY_DEFAULT = 2;
+
+    public static function getTotalRecords()
+    {
+        $db = Db::getConnection();
+        $result = $db->prepare("SELECT count(id) AS count FROM phonebook");
+        $result->execute();
+        $row = $result->fetch();
+        return $row['count'];
+    }
+
     public static function getRecord($name, $phone)
     {
         $phoneRecord = array();
@@ -39,11 +51,17 @@ class PhoneBook
         return $phoneRecord;
     }
 
-    public static function getRecordsList()
+    public static function getRecordsList($page = 1)
     {
+        $page = intval($page);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
         $phoneRecord = array();
         $db = Db::getConnection();
-        $result = $db->prepare("SELECT * FROM phonebook ORDER BY name LIMIT 10");
+        $result = $db->prepare("SELECT * FROM phonebook "
+            . "ORDER BY name "
+            . "LIMIT ".intval(self::SHOW_BY_DEFAULT)
+            . " OFFSET ".$offset);
         $result->execute();
         $i = 0;
         while($row = $result->fetch()) {
