@@ -109,4 +109,30 @@ class PhoneBook
         $result->bindParam(3, $id);
         $result->execute();
     }
+
+    public static function getRecordsByIds($idsArray)
+    {
+        $records = array();
+
+        $db = Db::getConnection();
+
+        $idsString = implode(',', $idsArray);
+
+        $sql = "SELECT * FROM `phonebook` WHERE id IN ($idsString)";
+
+        $result = $db->query($sql);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        while ($row = $result->fetch())
+        {
+            $records[$i]['id'] = $row['id'];
+            $records[$i]['name'] = $row['name'];
+            $records[$i]['phone'] = $row['phone'];
+            $records[$i]['price'] = ($i+1)*($i+1);
+            $i++;
+        }
+
+        return $records;
+    }
 }

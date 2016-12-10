@@ -20,6 +20,7 @@ foreach ($records as $record) {
             <td>
                 <a class="btn btn-default" href="/manage/<?php echo $record['id']; ?>"><?php echo Translator::Translate('manage') ?></a>
                 <a class="btn btn-default" href="/delete/<?php echo $record['id']; ?>"><?php echo Translator::Translate('delete') ?></a>
+                <a class="btn btn-default" href="/cart/add/<?php echo $record['id']; ?>"><?php echo Translator::Translate('addtocart') ?></a>
             </td>
         </tr>
 <?php

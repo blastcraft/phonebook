@@ -39,6 +39,7 @@
             <a class="btn btn-default" href="/search"><?php echo Translator::Translate('search') ?></a>
         </td>
         <td align="right">
+            <a href="/cart"><?php echo Translator::Translate('cart'); ?> (<?php echo Cart::countItems() ?>)</a>
             <?php if (isset($_SESSION['login']) && $_SESSION['login'] != 'guest'): ?>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default"><?php echo $_SESSION['login']; ?></button>

@@ -1,6 +1,8 @@
 <?php
 
 return array(
+    'cart/add/([0-9]+)' => 'cart/add/$1',
+    'cart' => 'cart/list',
     'add' => 'phonebook/showaddform',
     'search' => 'phonebook/showsearchform',
     'delete/([0-9]*)' => 'phonebook/delete/$1',
