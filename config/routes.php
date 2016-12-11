@@ -5,6 +5,7 @@ return array(
     'cart' => 'cart/list',
     'add' => 'phonebook/showaddform',
     'search' => 'phonebook/showsearchform',
+    'showlist' => 'phonebook/searchlist',
     'delete/([0-9]*)' => 'phonebook/delete/$1',
     'manage/([0-9]*)' => 'phonebook/manage/$1',
     'ru' => 'phonebook/langru',

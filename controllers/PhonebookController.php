@@ -27,6 +27,7 @@ class PhonebookController
 
     public function actionShowsearchform()
     {
+        /*
         if (isset($_POST["search"])) {
             $records = PhoneBook::getRecord($_POST['name'], $_POST['phone']);
             require_once(ROOT . '/views/phonebook/search.php');
@@ -34,6 +35,16 @@ class PhonebookController
         } else {
             require_once(ROOT . '/views/phonebook/search.php');
         }
+        */
+        require_once(ROOT . '/views/phonebook/searchajax.php');
+        return true;
+    }
+
+    public function actionSearchlist()
+    {
+        // for AJAX request through POST method
+        $records = PhoneBook::getRecord($_POST['name'], $_POST['phone']);
+        require_once(ROOT . '/views/phonebook/searchlist.php');
         return true;
     }
 
